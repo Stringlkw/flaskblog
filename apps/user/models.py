@@ -12,6 +12,7 @@ class User(db.Model):
     icon = db.column(db.String(100))
     isdelete = db.Column(db.Boolean, default=False)
     rdatetime = db.Column(db.DateTime, default=datetime.now)
+    articles = db.relationship('Article', backref='user')
 
     def __str__(self):
         return self.username
