@@ -20,7 +20,7 @@ class Article(db.Model):
     love_num = db.Column(db.Integer, default=0)
     # 外键 同步到数据库的外键关系
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    type_id = db.Column(db.Integer, db.ForeignKey('type.id'), nullable=False)
+    type_id = db.Column(db.Integer, db.ForeignKey('type.id'))
     comments = db.relationship('Comment', backref='article')
 
 
