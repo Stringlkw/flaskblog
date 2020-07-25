@@ -3,6 +3,7 @@ from flask import Flask
 import settings
 from apps.article.view import article_bp
 from apps.user.view import user_bp
+
 from exts import db
 
 

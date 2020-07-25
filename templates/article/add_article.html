@@ -5,10 +5,10 @@
     <title>添加文章</title>
 </head>
 <body>
-<form action="{{ url_for(article.publish_article) }}" method="post">
+<form action="{{ url_for('article.publish_article') }}" method="post">
     <p><input type="text" name="title" placeholder="文章标题"></p>
     <p>
-        <textarea cols="50" rows="10" placeholder="输入文章内容"></textarea>
+        <textarea name="content" cols="50" rows="10" placeholder="输入文章内容"></textarea>
     </p>
     <p>
         用户：
