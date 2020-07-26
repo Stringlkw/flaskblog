@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block title %}
+    用户登录
+{% endblock %}
+
+{% block styles %}
+    {{ super() }}
+    <style>
+        #container {
+            padding-top: 20px;
+            width: 1000px;
+            height: 850px;
+            margin: 0 auto;
+        }
+        #container h1 {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        #tab span{
+            display: inline-block;
+            width: 120px;
+            text-align: center;
+            cursor: default;
+        }
+
+        #tips{
+            color: red;
+            font-size: 14px;
+
+        }
+
+    </style>
+{% endblock %}
+
+{% block newcontent %}
+    <div id="container">
+        <h1>用户登录</h1>
+        <div id="tab">
+            <span>用户名/密码</span> | <span>手机验证码</span>
+            <p id="tips">{{ msg }}</p>
+        </div>
+        <div class="logintab">
+            <form action="{{ url_for('user.login') }}" class="form-horizontal" method="post">
+                <div class="form-group">
+                    <label for="inputUsername" class="col-md-2 control-label col-md-offset-1">用户名</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="inputUsername" name="username"
+                               placeholder="username">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-md-2 control-label col-md-offset-1">密码</label>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control" id="inputPassword" name="password"
+                               placeholder="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-3 col-md-10">
+                        <button type="submit" class="btn btn-primary col-md-3">登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+                        <button type="reset" class="btn btn-primary col-md-3 col-md-offset-1">
+                            重&nbsp;&nbsp;&nbsp;&nbsp;置
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="logintab">
+            <form action="{{ url_for('user.register') }}" class="form-horizontal" method="post">
+                <div class="form-group">
+                    <label for="inputPhone" class="col-md-2 control-label">手机号码</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="phone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-md-2 control-label col-md-offset-1">验证码</label>
+                    <div class="col-md-4">
+                        <input type="email" class="form-control" id="inputEmail" name="email"
+                               placeholder="Email">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="button" class="btn btn-info" id="buttonCheck" value="发送验证码"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script>
+        $(function () {
+            $(".logintab").hide();
+            $(".logintab").first().show();
+        })
+    </script>
+{% endblock %}
